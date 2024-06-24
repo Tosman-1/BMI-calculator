@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculator</title>
+    <link rel="stylesheet" href="bmi.css" />
+  </head>
+  <body>
+    <div class="main">
+      <input type="number" id="weight" placeholder="Weight in kg" />
+      <input type="number" id="height" placeholder="Height in meter" />
+      <button onclick="calBmi()">calculate</button>
+      <div id="display"></div>
+    </div>
+  </body>
+</html>
+<script>
+  let weight = document.getElementById("weight");
+  let height = document.getElementById("height");
+  let display = document.getElementById("display");
+  function calBmi() {
+    bmi = Math.round(weight.value / height.value ** 2);
+    bmiResult(bmi);
+    // display.textContent = result;
+  }
+
+  function bmiResult(num) {
+    let result = "";
+    let resultColor = "";
+    if (num < 18.5) {
+      result = `Your BMI is ${num}, you are underweight`;
+      resultColor = "#ADD8E6";
+    } else if (num >= 18.5 && num < 25) {
+      result = `Your BMI is ${num}, your weight is normal`;
+      resultColor = "#00FF00";
+    } else if (num >= 25 && num < 30) {
+      result = `Your BMI is ${num}, you are overweight`;
+      resultColor = "#FFA500";
+    } else if (num >= 30) {
+      result = `Your BMI is ${num}, you are obese`;
+      resultColor = "#FF0000";
+    } else {
+      result = "invalid input";
+    }
+
+    display.textContent = result;
+    display.style.color = resultColor;
+  }
+
+  // function bmiResult(bmi) {
+  //   let resultText = "";
+  //   let resultColor = "";
+  //   if (bmi < 18.5) {
+  //     resultText = `You are underweight`;
+  //     resultColor = "#ADD8E6";
+  //   }
+  //   display.textContent = resultText;
+  //   display.style.color = resultColor;
+  // }
+</script>
